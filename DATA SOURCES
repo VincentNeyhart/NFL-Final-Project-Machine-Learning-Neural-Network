@@ -1,3 +1,16 @@
 *** DATA SOURCES ***
 
 All data used in this project is taken from nflscraPy (https://github.com/blnkpagelabs/nflscraPy), specifically the 2010-2019 season files found here: https://github.com/blnkpagelabs/nflscraPy/releases/tag/Seasons
+
+
+combined all 10 datasets (2010 season-2019 season) with this cell of code:
+
+import pandas as pd
+
+years = range(2010, 2020)
+dfs = [pd.read_csv(f"Season-{y}.csv") for y in years]
+
+combined = pd.concat(dfs, ignore_index=True)
+
+combined.to_csv("Season-2010-2019.csv", index=False)
+
